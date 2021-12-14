@@ -1,0 +1,1970 @@
+{
+  "name": "amazon-dynamodb",
+  "version": "1.0.0",
+  "label": "Amazon DynamoDB",
+  "description": "",
+  "publisher": "Fortinet",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "category": "AWS Services",
+  "icon_small_name": "cyops_small.png",
+  "icon_large_name": "cyops_large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "AWS Access Key",
+        "type": "password",
+        "name": "aws_access_key_id",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "value": null,
+        "description": "The access key for users AWS account"
+      },
+      {
+        "title": "AWS Secret Key",
+        "type": "password",
+        "name": "aws_secret_access_key",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "value": null,
+        "description": "The secret key for user's AWS account."
+      },
+      {
+        "title": "Region Name",
+        "type": "text",
+        "name": "region_name",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "value": "",
+        "description": "AWS Region to use, for example, us-west-1 or us-west-2 etc"
+      }
+    ]
+  },
+  "operations": [
+    {
+      "title": "Create Table",
+      "operation": "create_table",
+      "description": "Adds a new table in Amazon DynamoDB",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Table Name",
+          "description": "The name of the table to be created.",
+          "tooltip": "A table name should be between 3 and 255 characters, containing only letters, numbers, underscores (_), hyphens (-), and periods (.)",
+          "type": "text",
+          "name": "TableName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Partition Key Name",
+          "description": "The partition key is part of the table's primary key. It is a hash value that is used to retrieve items from your table and allocate data across hosts for scalability and availability.",
+          "tooltip": "A name of the partition key. 1 to 255 characters and case sensitive.",
+          "type": "text",
+          "name": "partitionKeyName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Partition Key Data Type",
+          "description": "The data type for the partition key",
+          "tooltip": "The data type for the partition key",
+          "type": "select",
+          "name": "partitionKeyDataType",
+          "options": [
+            "String",
+            "Binary",
+            "Number"
+          ],
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Sort Key (Optional)",
+          "description": "The sort key is second part of the table's primary key. The sort key allows you to sort or search among all items sharing the same partition key.",
+          "tooltip": "The sort key allows you to sort or search among all items sharing the same partition key.",
+          "type": "checkbox",
+          "name": "sortKey",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "Sort Key Name",
+                "description": "A name of the sort key.",
+                "tooltip": "A name of the sort key. 1 to 255 characters and case sensitive.",
+                "type": "text",
+                "name": "sortKeyName",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Sort Key Data Type",
+                "description": "The data type for the sort key",
+                "tooltip": "The data type for the sort key",
+                "type": "select",
+                "name": "sortKeyDataType",
+                "options": [
+                  "String",
+                  "Binary",
+                  "Number"
+                ],
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              }
+            ]
+          }
+        },
+        {
+          "title": "Billing Mode",
+          "description": "This controls how you are charged for read and write throughput and how you manage capacity",
+          "tooltip": "Select 'Provisioned' mode for predictable workloads or Select 'On Demand' for unpredictable workloads",
+          "type": "select",
+          "name": "billingMode",
+          "options": [
+            "Provisioned",
+            "On Demand"
+          ],
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "",
+          "onchange": {
+            "Provisioned": [
+              {
+                "title": "Read Capacity",
+                "description": "The maximum number of strongly consistent reads consumed per second",
+                "tooltip": "The maximum number of strongly consistent reads consumed per second",
+                "type": "integer",
+                "name": "readCapacityUnits",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": 5
+              },
+              {
+                "title": "Write Capacity",
+                "description": "The maximum number of writes consumed per second",
+                "tooltip": "The maximum number of writes consumed per second",
+                "type": "integer",
+                "name": "writeCapacityUnits",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": 5
+              }
+            ]
+          }
+        }
+      ],
+      "output_schema": {
+        "TableDescription": {
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "",
+              "AttributeType": ""
+            }
+          ],
+          "TableName": "",
+          "KeySchema": [
+            {
+              "AttributeName": "",
+              "KeyType": ""
+            }
+          ],
+          "TableStatus": "",
+          "CreationDateTime": "",
+          "ProvisionedThroughput": {
+            "LastIncreaseDateTime": "",
+            "LastDecreaseDateTime": "",
+            "NumberOfDecreasesToday": "",
+            "ReadCapacityUnits": "",
+            "WriteCapacityUnits": ""
+          },
+          "TableSizeBytes": "",
+          "ItemCount": "",
+          "TableArn": "",
+          "TableId": "",
+          "BillingModeSummary": {
+            "BillingMode": "",
+            "LastUpdateToPayPerRequestDateTime": ""
+          },
+          "LocalSecondaryIndexes": [
+            {
+              "IndexName": "",
+              "KeySchema": [
+                {
+                  "AttributeName": "",
+                  "KeyType": ""
+                }
+              ],
+              "Projection": {
+                "ProjectionType": "",
+                "NonKeyAttributes": [
+                  ""
+                ]
+              },
+              "IndexSizeBytes": "",
+              "ItemCount": "",
+              "IndexArn": ""
+            }
+          ],
+          "GlobalSecondaryIndexes": [
+            {
+              "IndexName": "",
+              "KeySchema": [
+                {
+                  "AttributeName": "",
+                  "KeyType": ""
+                }
+              ],
+              "Projection": {
+                "ProjectionType": "",
+                "NonKeyAttributes": [
+                  ""
+                ]
+              },
+              "IndexStatus": "",
+              "Backfilling": "",
+              "ProvisionedThroughput": {
+                "LastIncreaseDateTime": "",
+                "LastDecreaseDateTime": "",
+                "NumberOfDecreasesToday": "",
+                "ReadCapacityUnits": "",
+                "WriteCapacityUnits": ""
+              },
+              "IndexSizeBytes": "",
+              "ItemCount": "",
+              "IndexArn": ""
+            }
+          ],
+          "StreamSpecification": {
+            "StreamEnabled": "",
+            "StreamViewType": ""
+          },
+          "LatestStreamLabel": "",
+          "LatestStreamArn": "",
+          "GlobalTableVersion": "",
+          "Replicas": [
+            {
+              "RegionName": "",
+              "ReplicaStatus": "",
+              "ReplicaStatusDescription": "",
+              "ReplicaStatusPercentProgress": "",
+              "KMSMasterKeyId": "",
+              "ProvisionedThroughputOverride": {
+                "ReadCapacityUnits": ""
+              },
+              "GlobalSecondaryIndexes": [
+                {
+                  "IndexName": "",
+                  "ProvisionedThroughputOverride": {
+                    "ReadCapacityUnits": ""
+                  }
+                }
+              ],
+              "ReplicaInaccessibleDateTime": ""
+            }
+          ],
+          "RestoreSummary": {
+            "SourceBackupArn": "",
+            "SourceTableArn": "",
+            "RestoreDateTime": "",
+            "RestoreInProgress": ""
+          },
+          "SSEDescription": {
+            "Status": "",
+            "SSEType": "",
+            "KMSMasterKeyArn": "",
+            "InaccessibleEncryptionDateTime": ""
+          },
+          "ArchivalSummary": {
+            "ArchivalDateTime": "",
+            "ArchivalReason": "",
+            "ArchivalBackupArn": ""
+          }
+        }
+      }
+    },
+    {
+      "title": "Delete Table",
+      "operation": "delete_table",
+      "description": "Deletes an existing table from Amazon DynamoDB",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Table Name",
+          "description": "The name of the table to be deleted",
+          "tooltip": "The name of the table to be deleted",
+          "type": "text",
+          "name": "TableName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        }
+      ],
+      "output_schema": {
+        "TableDescription": {
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "",
+              "AttributeType": ""
+            }
+          ],
+          "TableName": "",
+          "KeySchema": [
+            {
+              "AttributeName": "",
+              "KeyType": ""
+            }
+          ],
+          "TableStatus": "",
+          "CreationDateTime": "",
+          "ProvisionedThroughput": {
+            "LastIncreaseDateTime": "",
+            "LastDecreaseDateTime": "",
+            "NumberOfDecreasesToday": "",
+            "ReadCapacityUnits": "",
+            "WriteCapacityUnits": ""
+          },
+          "TableSizeBytes": "",
+          "ItemCount": "",
+          "TableArn": "",
+          "TableId": "",
+          "BillingModeSummary": {
+            "BillingMode": "",
+            "LastUpdateToPayPerRequestDateTime": ""
+          },
+          "LocalSecondaryIndexes": [
+            {
+              "IndexName": "",
+              "KeySchema": [
+                {
+                  "AttributeName": "",
+                  "KeyType": ""
+                }
+              ],
+              "Projection": {
+                "ProjectionType": "",
+                "NonKeyAttributes": [
+                  ""
+                ]
+              },
+              "IndexSizeBytes": "",
+              "ItemCount": "",
+              "IndexArn": ""
+            }
+          ],
+          "GlobalSecondaryIndexes": [
+            {
+              "IndexName": "",
+              "KeySchema": [
+                {
+                  "AttributeName": "",
+                  "KeyType": ""
+                }
+              ],
+              "Projection": {
+                "ProjectionType": "",
+                "NonKeyAttributes": [
+                  ""
+                ]
+              },
+              "IndexStatus": "",
+              "Backfilling": "",
+              "ProvisionedThroughput": {
+                "LastIncreaseDateTime": "",
+                "LastDecreaseDateTime": "",
+                "NumberOfDecreasesToday": "",
+                "ReadCapacityUnits": "",
+                "WriteCapacityUnits": ""
+              },
+              "IndexSizeBytes": "",
+              "ItemCount": "",
+              "IndexArn": ""
+            }
+          ],
+          "StreamSpecification": {
+            "StreamEnabled": "",
+            "StreamViewType": ""
+          },
+          "LatestStreamLabel": "",
+          "LatestStreamArn": "",
+          "GlobalTableVersion": "",
+          "Replicas": [
+            {
+              "RegionName": "",
+              "ReplicaStatus": "",
+              "ReplicaStatusDescription": "",
+              "ReplicaStatusPercentProgress": "",
+              "KMSMasterKeyId": "",
+              "ProvisionedThroughputOverride": {
+                "ReadCapacityUnits": ""
+              },
+              "GlobalSecondaryIndexes": [
+                {
+                  "IndexName": "",
+                  "ProvisionedThroughputOverride": {
+                    "ReadCapacityUnits": ""
+                  }
+                }
+              ],
+              "ReplicaInaccessibleDateTime": ""
+            }
+          ],
+          "RestoreSummary": {
+            "SourceBackupArn": "",
+            "SourceTableArn": "",
+            "RestoreDateTime": "",
+            "RestoreInProgress": ""
+          },
+          "SSEDescription": {
+            "Status": "",
+            "SSEType": "",
+            "KMSMasterKeyArn": "",
+            "InaccessibleEncryptionDateTime": ""
+          },
+          "ArchivalSummary": {
+            "ArchivalDateTime": "",
+            "ArchivalReason": "",
+            "ArchivalBackupArn": ""
+          }
+        }
+      }
+    },
+    {
+      "title": "Update Table",
+      "operation": "update_table",
+      "description": "Updated an existing table",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Table Name",
+          "description": "The name of the table to be updated.",
+          "tooltip": "The name of the table to be updated.",
+          "type": "text",
+          "name": "TableName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Operation",
+          "description": "Select operation to be performed on the table",
+          "tooltip": "Select operation to be performed on the table",
+          "type": "select",
+          "name": "updateOperation",
+          "options": [
+            "Modify Provisioned Throughput",
+            "Enable or Disable DynamoDB Streams",
+            "Create a New Global Secondary Index",
+            "Update a Global Secondary Index",
+            "Remove a Global Secondary Index"
+          ],
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "",
+          "onchange": {
+            "Modify Provisioned Throughput": [
+              {
+                "title": "Billing Mode",
+                "description": "The partition key is part of the table's primary key. It is a hash value that is used to retrieve items from your table and allocate data across hosts for scalability and availability.",
+                "tooltip": "The partition key is part of the table's primary key.",
+                "type": "select",
+                "name": "billingMode",
+                "options": [
+                  "Provisioned",
+                  "On Demand"
+                ],
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "",
+                "onchange": {
+                  "Provisioned": [
+                    {
+                      "title": "Read Capacity",
+                      "description": "The maximum number of strongly consistent reads consumed per second",
+                      "tooltip": "The maximum number of strongly consistent reads consumed per second",
+                      "type": "integer",
+                      "name": "readCapacityUnits",
+                      "required": true,
+                      "visible": true,
+                      "editable": true,
+                      "value": 5
+                    },
+                    {
+                      "title": "Write Capacity",
+                      "description": "The maximum number of writes consumed per second",
+                      "tooltip": "The maximum number of writes consumed per second",
+                      "type": "integer",
+                      "name": "writeCapacityUnits",
+                      "required": true,
+                      "visible": true,
+                      "editable": true,
+                      "value": 5
+                    }
+                  ]
+                }
+              }
+            ],
+            "Enable or Disable DynamoDB Streams": [
+              {
+                "title": "Stream Status",
+                "description": "Enables or disable DynamoDB Streams on the table.",
+                "tooltip": "Check to enable DynamoDB Streams on the table.",
+                "type": "select",
+                "name": "streamEnabled",
+                "options": [
+                  "Enable",
+                  "Disable"
+                ],
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": false,
+                "onchange": {
+                  "Enable": [
+                    {
+                      "title": "Stream View Type",
+                      "description": "Capture item-level changes in your table, and push the changes to a DynamoDB stream.",
+                      "tooltip": "Select which information to be pushed on DynamoDB stream for any changed items in the table",
+                      "type": "select",
+                      "name": "streamViewType",
+                      "options": [
+                        "Key attributes only",
+                        "New image",
+                        "Old image",
+                        "New and old images"
+                      ],
+                      "required": false,
+                      "visible": true,
+                      "editable": true,
+                      "value": ""
+                    }
+                  ]
+                }
+              }
+            ],
+            "Create a New Global Secondary Index": [
+              {
+                "title": "Index Name",
+                "description": "The name of the global secondary index to be created.",
+                "tooltip": "A index name should be between 3 and 255 characters, containing only letters, numbers, underscores (_), hyphens (-), and periods (.)",
+                "type": "text",
+                "name": "indexName",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Partition Key Name",
+                "description": "The partition key of the global index",
+                "tooltip": "A name of the partition key. 1 to 255 characters and case sensitive.",
+                "type": "text",
+                "name": "partitionKeyName",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Partition Key Data Type",
+                "description": "The data type for the partition key",
+                "tooltip": "The data type for the partition key",
+                "type": "select",
+                "name": "partitionKeyDataType",
+                "options": [
+                  "String",
+                  "Binary",
+                  "Number"
+                ],
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Sort Key (Optional)",
+                "description": "The sort key of the global index.",
+                "tooltip": "The sort key allows you to sort or search among all items sharing the same partition key.",
+                "type": "checkbox",
+                "name": "sortKey",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "value": false,
+                "onchange": {
+                  "true": [
+                    {
+                      "title": "Sort Key Name",
+                      "description": "A name of the sort key.",
+                      "tooltip": "A name of the sort key. 1 to 255 characters and case sensitive.",
+                      "type": "text",
+                      "name": "sortKeyName",
+                      "required": true,
+                      "visible": true,
+                      "editable": true,
+                      "value": ""
+                    },
+                    {
+                      "title": "Sort Key Data Type",
+                      "description": "The data type for the sort key",
+                      "tooltip": "The data type for the sort key",
+                      "type": "select",
+                      "name": "sortKeyDataType",
+                      "options": [
+                        "String",
+                        "Binary",
+                        "Number"
+                      ],
+                      "required": true,
+                      "visible": true,
+                      "editable": true,
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "title": "Read Capacity",
+                "description": "The maximum number of strongly consistent reads consumed per second",
+                "tooltip": "The maximum number of strongly consistent reads consumed per second",
+                "type": "integer",
+                "name": "readCapacityUnits",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": 5
+              },
+              {
+                "title": "Write Capacity",
+                "description": "The maximum number of writes consumed per second",
+                "tooltip": "The maximum number of writes consumed per second",
+                "type": "integer",
+                "name": "writeCapacityUnits",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": 5
+              },
+              {
+                "title": "Attribute projections",
+                "description": "The set of attributes that are projected into the index",
+                "tooltip": "The set of attributes that are projected into the index",
+                "type": "select",
+                "name": "projection",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "",
+                "options": [
+                  "All",
+                  "Only Keys",
+                  "Include"
+                ],
+                "onchange": {
+                  "Include": [
+                    {
+                      "title": "Attribute Name",
+                      "description": "Represents the non-key attribute names which will be projected into the index.",
+                      "tooltip": "Provide non-key attribute names in list or csv format.",
+                      "type": "text",
+                      "name": "nonKeyAttributes",
+                      "required": true,
+                      "visible": true,
+                      "editable": true,
+                      "value": ""
+                    }
+                  ]
+                }
+              }
+            ],
+            "Update a Global Secondary Index": [
+              {
+                "title": "Index Name",
+                "description": "The name of the global secondary index to be created.",
+                "tooltip": "A index name should be between 3 and 255 characters, containing only letters, numbers, underscores (_), hyphens (-), and periods (.)",
+                "type": "text",
+                "name": "indexName",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Read Capacity",
+                "description": "The maximum number of strongly consistent reads consumed per second",
+                "tooltip": "The maximum number of strongly consistent reads consumed per second",
+                "type": "integer",
+                "name": "readCapacityUnits",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": 5
+              },
+              {
+                "title": "Write Capacity",
+                "description": "The maximum number of writes consumed per second",
+                "tooltip": "The maximum number of writes consumed per second",
+                "type": "integer",
+                "name": "writeCapacityUnits",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": 5
+              }
+            ],
+            "Remove a Global Secondary Index": [
+              {
+                "title": "Index Name",
+                "description": "The name of the global secondary index to be created.",
+                "tooltip": "A index name should be between 3 and 255 characters, containing only letters, numbers, underscores (_), hyphens (-), and periods (.)",
+                "type": "text",
+                "name": "indexName",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              }
+            ]
+          }
+        }
+      ],
+      "output_schema": {
+        "TableDescription": {
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "",
+              "AttributeType": ""
+            }
+          ],
+          "TableName": "",
+          "KeySchema": [
+            {
+              "AttributeName": "",
+              "KeyType": ""
+            }
+          ],
+          "TableStatus": "",
+          "CreationDateTime": "",
+          "ProvisionedThroughput": {
+            "LastIncreaseDateTime": "",
+            "LastDecreaseDateTime": "",
+            "NumberOfDecreasesToday": "",
+            "ReadCapacityUnits": "",
+            "WriteCapacityUnits": ""
+          },
+          "TableSizeBytes": "",
+          "ItemCount": "",
+          "TableArn": "",
+          "TableId": "",
+          "BillingModeSummary": {
+            "BillingMode": "",
+            "LastUpdateToPayPerRequestDateTime": ""
+          },
+          "LocalSecondaryIndexes": [
+            {
+              "IndexName": "",
+              "KeySchema": [
+                {
+                  "AttributeName": "",
+                  "KeyType": ""
+                }
+              ],
+              "Projection": {
+                "ProjectionType": "",
+                "NonKeyAttributes": []
+              },
+              "IndexSizeBytes": "",
+              "ItemCount": "",
+              "IndexArn": ""
+            }
+          ],
+          "GlobalSecondaryIndexes": [
+            {
+              "IndexName": "",
+              "KeySchema": [
+                {
+                  "AttributeName": "",
+                  "KeyType": ""
+                }
+              ],
+              "Projection": {
+                "ProjectionType": "",
+                "NonKeyAttributes": []
+              },
+              "IndexStatus": "",
+              "Backfilling": "",
+              "ProvisionedThroughput": {
+                "LastIncreaseDateTime": "",
+                "LastDecreaseDateTime": "",
+                "NumberOfDecreasesToday": "",
+                "ReadCapacityUnits": "",
+                "WriteCapacityUnits": ""
+              },
+              "IndexSizeBytes": "",
+              "ItemCount": "",
+              "IndexArn": ""
+            }
+          ],
+          "StreamSpecification": {
+            "StreamEnabled": "",
+            "StreamViewType": ""
+          },
+          "LatestStreamLabel": "",
+          "LatestStreamArn": "",
+          "GlobalTableVersion": "",
+          "Replicas": [
+            {
+              "RegionName": "",
+              "ReplicaStatus": "",
+              "ReplicaStatusDescription": "",
+              "ReplicaStatusPercentProgress": "",
+              "KMSMasterKeyId": "",
+              "ProvisionedThroughputOverride": {
+                "ReadCapacityUnits": ""
+              },
+              "GlobalSecondaryIndexes": [
+                {
+                  "IndexName": "",
+                  "ProvisionedThroughputOverride": {
+                    "ReadCapacityUnits": ""
+                  }
+                }
+              ],
+              "ReplicaInaccessibleDateTime": "",
+              "ReplicaTableClassSummary": {
+                "TableClass": "",
+                "LastUpdateDateTime": ""
+              }
+            }
+          ],
+          "RestoreSummary": {
+            "SourceBackupArn": "",
+            "SourceTableArn": "",
+            "RestoreDateTime": "",
+            "RestoreInProgress": ""
+          },
+          "SSEDescription": {
+            "Status": "",
+            "SSEType": "",
+            "KMSMasterKeyArn": "",
+            "InaccessibleEncryptionDateTime": ""
+          },
+          "ArchivalSummary": {
+            "ArchivalDateTime": "",
+            "ArchivalReason": "",
+            "ArchivalBackupArn": ""
+          },
+          "TableClassSummary": {
+            "TableClass": "",
+            "LastUpdateDateTime": ""
+          }
+        }
+      }
+    },
+    {
+      "title": "Get Table List",
+      "operation": "get_table_list",
+      "description": "Get list of an existing table from Amazon DynamoDB",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {}
+    },
+    {
+      "title": "Get Table Details",
+      "operation": "get_table_details",
+      "description": "Describe information about specified table from Amazon DynamoDB",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Table Name",
+          "description": "The name of the table to describe.",
+          "tooltip": "The name of the table to describe.",
+          "type": "text",
+          "name": "TableName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        }
+      ],
+      "output_schema": {
+        "Table": {
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "",
+              "AttributeType": ""
+            }
+          ],
+          "TableName": "",
+          "KeySchema": [
+            {
+              "AttributeName": "",
+              "KeyType": ""
+            }
+          ],
+          "TableStatus": "",
+          "CreationDateTime": "",
+          "ProvisionedThroughput": {
+            "LastIncreaseDateTime": "",
+            "LastDecreaseDateTime": "",
+            "NumberOfDecreasesToday": "",
+            "ReadCapacityUnits": "",
+            "WriteCapacityUnits": ""
+          },
+          "TableSizeBytes": "",
+          "ItemCount": "",
+          "TableArn": "",
+          "TableId": "",
+          "BillingModeSummary": {
+            "BillingMode": "",
+            "LastUpdateToPayPerRequestDateTime": ""
+          },
+          "LocalSecondaryIndexes": [
+            {
+              "IndexName": "",
+              "KeySchema": [
+                {
+                  "AttributeName": "",
+                  "KeyType": ""
+                }
+              ],
+              "Projection": {
+                "ProjectionType": "",
+                "NonKeyAttributes": []
+              },
+              "IndexSizeBytes": "",
+              "ItemCount": "",
+              "IndexArn": ""
+            }
+          ],
+          "GlobalSecondaryIndexes": [
+            {
+              "IndexName": "",
+              "KeySchema": [
+                {
+                  "AttributeName": "",
+                  "KeyType": ""
+                }
+              ],
+              "Projection": {
+                "ProjectionType": "",
+                "NonKeyAttributes": [
+                ]
+              },
+              "IndexStatus": "",
+              "Backfilling": "",
+              "ProvisionedThroughput": {
+                "LastIncreaseDateTime": "",
+                "LastDecreaseDateTime": "",
+                "NumberOfDecreasesToday": "",
+                "ReadCapacityUnits": "",
+                "WriteCapacityUnits": ""
+              },
+              "IndexSizeBytes": "",
+              "ItemCount": "",
+              "IndexArn": ""
+            }
+          ],
+          "StreamSpecification": {
+            "StreamEnabled": "",
+            "StreamViewType": ""
+          },
+          "LatestStreamLabel": "",
+          "LatestStreamArn": "",
+          "GlobalTableVersion": "",
+          "Replicas": [
+            {
+              "RegionName": "",
+              "ReplicaStatus": "",
+              "ReplicaStatusDescription": "",
+              "ReplicaStatusPercentProgress": "",
+              "KMSMasterKeyId": "",
+              "ProvisionedThroughputOverride": {
+                "ReadCapacityUnits": ""
+              },
+              "GlobalSecondaryIndexes": [
+                {
+                  "IndexName": "",
+                  "ProvisionedThroughputOverride": {
+                    "ReadCapacityUnits": ""
+                  }
+                }
+              ],
+              "ReplicaInaccessibleDateTime": "",
+              "ReplicaTableClassSummary": {
+                "TableClass": "",
+                "LastUpdateDateTime": ""
+              }
+            }
+          ],
+          "RestoreSummary": {
+            "SourceBackupArn": "",
+            "SourceTableArn": "",
+            "RestoreDateTime": "",
+            "RestoreInProgress": ""
+          },
+          "SSEDescription": {
+            "Status": "",
+            "SSEType": "",
+            "KMSMasterKeyArn": "",
+            "InaccessibleEncryptionDateTime": ""
+          },
+          "ArchivalSummary": {
+            "ArchivalDateTime": "",
+            "ArchivalReason": "",
+            "ArchivalBackupArn": ""
+          },
+          "TableClassSummary": {
+            "TableClass": "",
+            "LastUpdateDateTime": ""
+          }
+        }
+      }
+    },
+    {
+      "title": "Add Item",
+      "operation": "add_item",
+      "description": "Adds a new item in table",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Table Name",
+          "description": "The name of the table to contain the item.",
+          "tooltip": "The name of the table to contain the item.",
+          "type": "text",
+          "name": "TableName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Partition Key Name",
+          "description": "A name of the partition key.",
+          "tooltip": "Provide a name for the partition key",
+          "type": "text",
+          "name": "partitionKeyName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Partition Key Data Type",
+          "description": "The data type for the partition key value",
+          "tooltip": "The data type for the partition key value",
+          "type": "select",
+          "name": "partitionKeyDataType",
+          "options": [
+            "String",
+            "Binary",
+            "Number"
+          ],
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Partition Key Value",
+          "description": "A value of the partition key.",
+          "tooltip": "Provide a value for the partition key",
+          "type": "text",
+          "name": "partitionKeyValue",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Sort Key",
+          "description": "Provide a value for the sort key.",
+          "tooltip": "For a composite primary key, you must provide values for both the partition key and the sort key.",
+          "type": "checkbox",
+          "name": "sortKey",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "Sort Key Name",
+                "description": "A name of the sort key.",
+                "tooltip": "A name of the sort key.",
+                "type": "text",
+                "name": "sortKeyName",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Sort Key Data Type",
+                "description": "The data type for the sort key value",
+                "tooltip": "The data type for the sort key value",
+                "type": "select",
+                "name": "sortKeyDataType",
+                "options": [
+                  "String",
+                  "Binary",
+                  "Number"
+                ],
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Sort Key Value",
+                "description": "A value of the sort key.",
+                "tooltip": "A value of the sort key.",
+                "type": "text",
+                "name": "sortKeyValue",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              }
+            ]
+          }
+        },
+        {
+          "title": "Additional Attributes",
+          "description": "Add additional attributes other than primary key attributes.",
+          "tooltip": "Provide data in json format: { 'AttributeName': {'S': 'Value'}, 'AttributeName': { 'N': 'Value'} }. \nWhere 'S'=String, 'N'=Number, 'B'=Binary, 'SS'=StringSet, 'NS'=NumberSet, 'BS'=BinarySet, 'M'=Dictionary, 'L'=List, 'NULL'=boolean, 'BOOL'=boolean",
+          "type": "json",
+          "name": "additionalAttributes",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        }
+      ],
+      "output_schema": {
+        "Attributes": {
+          "AttributeName": {
+            "S": "",
+            "N": "",
+            "B": "",
+            "SS": [],
+            "NS": [],
+            "BS": [],
+            "M": {},
+            "L": [],
+            "NULL": "",
+            "BOOL": ""
+          }
+        },
+        "ConsumedCapacity": {
+          "TableName": "",
+          "CapacityUnits": "",
+          "ReadCapacityUnits": "",
+          "WriteCapacityUnits": "",
+          "Table": {
+            "ReadCapacityUnits": "",
+            "WriteCapacityUnits": "",
+            "CapacityUnits": ""
+          },
+          "LocalSecondaryIndexes": {
+            "AttributeName": {
+              "ReadCapacityUnits": "",
+              "WriteCapacityUnits": "",
+              "CapacityUnits": ""
+            }
+          },
+          "GlobalSecondaryIndexes": {
+            "AttributeName": {
+              "ReadCapacityUnits": "",
+              "WriteCapacityUnits": "",
+              "CapacityUnits": ""
+            }
+          }
+        },
+        "ItemCollectionMetrics": {
+          "ItemCollectionKey": {
+            "AttributeName": {
+              "S": "",
+              "N": "",
+              "B": "",
+              "SS": [],
+              "NS": [],
+              "BS": [],
+              "M": {},
+              "L": [],
+              "NULL": "",
+              "BOOL": ""
+            }
+          },
+          "SizeEstimateRangeGB": []
+        }
+      }
+    },
+    {
+      "title": "Delete Item",
+      "operation": "delete_item",
+      "description": "Deleted an item in specified table",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Table Name",
+          "description": "The name of the table from which to delete the item.",
+          "tooltip": "The name of the table from which to delete the item.",
+          "type": "text",
+          "name": "TableName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Partition Key Name",
+          "description": "A name of the partition key.",
+          "tooltip": "Provide a name for the partition key",
+          "type": "text",
+          "name": "partitionKeyName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Partition Key Data Type",
+          "description": "The data type for the partition key value",
+          "tooltip": "The data type for the partition key value",
+          "type": "select",
+          "name": "partitionKeyDataType",
+          "options": [
+            "String",
+            "Binary",
+            "Number"
+          ],
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Partition Key Value",
+          "description": "A value of the partition key.",
+          "tooltip": "Provide a value for the partition key",
+          "type": "text",
+          "name": "partitionKeyValue",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Sort Key",
+          "description": "Provide a value for the sort key.",
+          "tooltip": "For a composite primary key, you must provide values for both the partition key and the sort key.",
+          "type": "checkbox",
+          "name": "sortKey",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "Sort Key Name",
+                "description": "A name of the sort key.",
+                "tooltip": "A name of the sort key.",
+                "type": "text",
+                "name": "sortKeyName",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Sort Key Data Type",
+                "description": "The data type for the sort key value",
+                "tooltip": "The data type for the sort key value",
+                "type": "select",
+                "name": "sortKeyDataType",
+                "options": [
+                  "String",
+                  "Binary",
+                  "Number"
+                ],
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Sort Key Value",
+                "description": "A value of the sort key.",
+                "tooltip": "A value of the sort key.",
+                "type": "text",
+                "name": "sortKeyValue",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              }
+            ]
+          }
+        },
+        {
+          "title": "Additional Attributes",
+          "description": "Add additional attributes other than primary key attributes.",
+          "tooltip": "Provide data in json format: { 'AttributeName': {'S': 'Value'}, 'AttributeName': { 'N': 'Value'} }. \nWhere 'S'=String, 'N'=Number, 'B'=Binary, 'SS'=StringSet, 'NS'=NumberSet, 'BS'=BinarySet, 'M'=Dictionary, 'L'=List, 'NULL'=boolean, 'BOOL'=boolean",
+          "type": "json",
+          "name": "additionalAttributes",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        }
+      ],
+      "output_schema": {
+        "Attributes": {
+          "AttributeName": {
+            "S": "",
+            "N": "",
+            "B": "",
+            "SS": [],
+            "NS": [],
+            "BS": [],
+            "M": {},
+            "L": [],
+            "NULL": "",
+            "BOOL": ""
+          }
+        },
+        "ConsumedCapacity": {
+          "TableName": "",
+          "CapacityUnits": "",
+          "ReadCapacityUnits": "",
+          "WriteCapacityUnits": "",
+          "Table": {
+            "ReadCapacityUnits": "",
+            "WriteCapacityUnits": "",
+            "CapacityUnits": ""
+          },
+          "LocalSecondaryIndexes": {
+            "AttributeName": {
+              "ReadCapacityUnits": "",
+              "WriteCapacityUnits": "",
+              "CapacityUnits": ""
+            }
+          },
+          "GlobalSecondaryIndexes": {
+            "AttributeName": {
+              "ReadCapacityUnits": "",
+              "WriteCapacityUnits": "",
+              "CapacityUnits": ""
+            }
+          }
+        },
+        "ItemCollectionMetrics": {
+          "ItemCollectionKey": {
+            "AttributeName": {
+              "S": "",
+              "N": "",
+              "B": "",
+              "SS": [],
+              "NS": [],
+              "BS": [],
+              "M": {},
+              "L": [],
+              "NULL": "",
+              "BOOL": ""
+            }
+          },
+          "SizeEstimateRangeGB": []
+        }
+      }
+    },
+    {
+      "title": "Search Item",
+      "operation": "search_item",
+      "description": "Searches an item in specified table.",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Table Name",
+          "description": "The name of the table containing the requested item.",
+          "tooltip": "The name of the table containing the requested item.",
+          "type": "text",
+          "name": "TableName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Partition Key Name",
+          "description": "A name of the partition key.",
+          "tooltip": "Provide a name for the partition key",
+          "type": "text",
+          "name": "partitionKeyName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Partition Key Data Type",
+          "description": "The data type for the partition key value",
+          "tooltip": "The data type for the partition key value",
+          "type": "select",
+          "name": "partitionKeyDataType",
+          "options": [
+            "String",
+            "Binary",
+            "Number"
+          ],
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Partition Key Value",
+          "description": "A value of the partition key.",
+          "tooltip": "Provide a value for the partition key",
+          "type": "text",
+          "name": "partitionKeyValue",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Sort Key",
+          "description": "Provide a value for the sort key.",
+          "tooltip": "For a composite primary key, you must provide values for both the partition key and the sort key.",
+          "type": "checkbox",
+          "name": "sortKey",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "Sort Key Name",
+                "description": "A name of the sort key.",
+                "tooltip": "A name of the sort key.",
+                "type": "text",
+                "name": "sortKeyName",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Sort Key Data Type",
+                "description": "The data type for the sort key value",
+                "tooltip": "The data type for the sort key value",
+                "type": "select",
+                "name": "sortKeyDataType",
+                "options": [
+                  "String",
+                  "Binary",
+                  "Number"
+                ],
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Sort Key Value",
+                "description": "A value of the sort key.",
+                "tooltip": "A value of the sort key.",
+                "type": "text",
+                "name": "sortKeyValue",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              }
+            ]
+          }
+        }
+      ],
+      "output_schema": {
+        "Attributes": {
+          "AttributeName": {
+            "S": "",
+            "N": "",
+            "B": "",
+            "SS": [],
+            "NS": [],
+            "BS": [],
+            "M": {},
+            "L": [],
+            "NULL": "",
+            "BOOL": ""
+          }
+        },
+        "ConsumedCapacity": {
+          "TableName": "",
+          "CapacityUnits": "",
+          "ReadCapacityUnits": "",
+          "WriteCapacityUnits": "",
+          "Table": {
+            "ReadCapacityUnits": "",
+            "WriteCapacityUnits": "",
+            "CapacityUnits": ""
+          },
+          "LocalSecondaryIndexes": {
+            "AttributeName": {
+              "ReadCapacityUnits": "",
+              "WriteCapacityUnits": "",
+              "CapacityUnits": ""
+            }
+          },
+          "GlobalSecondaryIndexes": {
+            "AttributeName": {
+              "ReadCapacityUnits": "",
+              "WriteCapacityUnits": "",
+              "CapacityUnits": ""
+            }
+          }
+        },
+        "ItemCollectionMetrics": {
+          "ItemCollectionKey": {
+            "AttributeName": {
+              "S": "",
+              "N": "",
+              "B": "",
+              "SS": [],
+              "NS": [],
+              "BS": [],
+              "M": {},
+              "L": [],
+              "NULL": "",
+              "BOOL": ""
+            }
+          },
+          "SizeEstimateRangeGB": []
+        }
+      }
+    },
+    {
+      "title": "Create Global Table",
+      "operation": "create_global_table",
+      "description": "Creates a global table from an existing table.",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Global Table Name",
+          "description": "The global table name to be created.",
+          "tooltip": "The global table name to be created.",
+          "type": "text",
+          "name": "globalTableName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Region Name",
+          "description": "The Region where the global table needs to be created.",
+          "tooltip": "Region where the global table needs to be created.",
+          "type": "text",
+          "name": "regionName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        }
+      ],
+      "output_schema": {
+        "GlobalTableDescription": {
+          "ReplicationGroup": [
+            {
+              "RegionName": "",
+              "ReplicaStatus": "",
+              "ReplicaStatusDescription": "",
+              "ReplicaStatusPercentProgress": "",
+              "KMSMasterKeyId": "",
+              "ProvisionedThroughputOverride": {
+                "ReadCapacityUnits": ""
+              },
+              "GlobalSecondaryIndexes": [
+                {
+                  "IndexName": "",
+                  "ProvisionedThroughputOverride": {
+                    "ReadCapacityUnits": ""
+                  }
+                }
+              ],
+              "ReplicaInaccessibleDateTime": "",
+              "ReplicaTableClassSummary": {
+                "TableClass": "",
+                "LastUpdateDateTime": ""
+              }
+            }
+          ],
+          "GlobalTableArn": "",
+          "CreationDateTime": "",
+          "GlobalTableStatus": "",
+          "GlobalTableName": ""
+        }
+      }
+    },
+    {
+      "title": "Describe Global Table",
+      "operation": "describe_global_table",
+      "description": "Returns information about the specified global table.",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Global Table Name",
+          "description": "The name of the global table.",
+          "tooltip": "The name of the global table.",
+          "type": "text",
+          "name": "globalTableName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        }
+      ],
+      "output_schema": {
+        "GlobalTableDescription": {
+          "ReplicationGroup": [
+            {
+              "RegionName": "",
+              "ReplicaStatus": "",
+              "ReplicaStatusDescription": "",
+              "ReplicaStatusPercentProgress": "",
+              "KMSMasterKeyId": "",
+              "ProvisionedThroughputOverride": {
+                "ReadCapacityUnits": ""
+              },
+              "GlobalSecondaryIndexes": [
+                {
+                  "IndexName": "",
+                  "ProvisionedThroughputOverride": {
+                    "ReadCapacityUnits": ""
+                  }
+                }
+              ],
+              "ReplicaInaccessibleDateTime": "",
+              "ReplicaTableClassSummary": {
+                "TableClass": "",
+                "LastUpdateDateTime": ""
+              }
+            }
+          ],
+          "GlobalTableArn": "",
+          "CreationDateTime": "",
+          "GlobalTableStatus": "",
+          "GlobalTableName": ""
+        }
+      }
+    },
+    {
+      "title": "Get Global Table List",
+      "operation": "get_global_table_list",
+      "description": "Lists all global tables that have a replica in the specified Region.",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "GlobalTables": [
+          {
+            "GlobalTableName": "",
+            "ReplicationGroup": [
+              {
+                "RegionName": ""
+              }
+            ]
+          }
+        ],
+        "LastEvaluatedGlobalTableName": ""
+      }
+    },
+    {
+      "title": "Create Table Backup",
+      "operation": "create_backup",
+      "description": "Creates a backup for an existing table.",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Table Name",
+          "description": "The name of the table to be backup",
+          "tooltip": "The name of the table to be backup",
+          "type": "text",
+          "name": "TableName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        },
+        {
+          "title": "Backup Name",
+          "description": "Specified name for the backup.",
+          "tooltip": "Specified name for the backup.",
+          "type": "text",
+          "name": "BackupName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        }
+      ],
+      "output_schema": {
+        "BackupDetails": {
+          "BackupArn": "",
+          "BackupName": "",
+          "BackupSizeBytes": "",
+          "BackupStatus": "",
+          "BackupType": "",
+          "BackupCreationDateTime": "",
+          "BackupExpiryDateTime": ""
+        }
+      }
+    },
+    {
+      "title": "Describe Table Backup",
+      "operation": "describe_table_backup",
+      "description": "Describes an existing backup of a table.",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Backup ARN",
+          "description": "The Amazon Resource Name (ARN) associated with the backup.",
+          "tooltip": "The Amazon Resource Name (ARN) associated with the backup.",
+          "type": "text",
+          "name": "BackupArn",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        }
+      ],
+      "output_schema": {
+        "BackupDescription": {
+          "BackupDetails": {
+            "BackupArn": "",
+            "BackupName": "",
+            "BackupSizeBytes": "",
+            "BackupStatus": "",
+            "BackupType": "",
+            "BackupCreationDateTime": "",
+            "BackupExpiryDateTime": ""
+          },
+          "SourceTableDetails": {
+            "TableName": "",
+            "TableId": "",
+            "TableArn": "",
+            "TableSizeBytes": "",
+            "KeySchema": [
+              {
+                "AttributeName": "",
+                "KeyType": ""
+              }
+            ],
+            "TableCreationDateTime": "",
+            "ProvisionedThroughput": {
+              "ReadCapacityUnits": "",
+              "WriteCapacityUnits": ""
+            },
+            "ItemCount": "",
+            "BillingMode": ""
+          },
+          "SourceTableFeatureDetails": {
+            "LocalSecondaryIndexes": [
+              {
+                "IndexName": "",
+                "KeySchema": [
+                  {
+                    "AttributeName": "",
+                    "KeyType": ""
+                  }
+                ],
+                "Projection": {
+                  "ProjectionType": "",
+                  "NonKeyAttributes": [
+                  ]
+                }
+              }
+            ],
+            "GlobalSecondaryIndexes": [
+              {
+                "IndexName": "",
+                "KeySchema": [
+                  {
+                    "AttributeName": "",
+                    "KeyType": ""
+                  }
+                ],
+                "Projection": {
+                  "ProjectionType": "",
+                  "NonKeyAttributes": [
+                  ]
+                },
+                "ProvisionedThroughput": {
+                  "ReadCapacityUnits": "",
+                  "WriteCapacityUnits": ""
+                }
+              }
+            ],
+            "StreamDescription": {
+              "StreamEnabled": "",
+              "StreamViewType": ""
+            },
+            "TimeToLiveDescription": {
+              "TimeToLiveStatus": "",
+              "AttributeName": ""
+            },
+            "SSEDescription": {
+              "Status": "",
+              "SSEType": "",
+              "KMSMasterKeyArn": "",
+              "InaccessibleEncryptionDateTime": ""
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Delete Table Backup",
+      "operation": "delete_table_backup",
+      "description": "Deletes an existing backup of a table.",
+      "category": "utilities",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Backup ARN",
+          "description": "The Amazon Resource Name (ARN) associated with the backup.",
+          "tooltip": "The Amazon Resource Name (ARN) associated with the backup.",
+          "type": "text",
+          "name": "BackupArn",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": ""
+        }
+      ],
+      "output_schema": {
+        "BackupDescription": {
+          "BackupDetails": {
+            "BackupArn": "",
+            "BackupName": "",
+            "BackupSizeBytes": "",
+            "BackupStatus": "",
+            "BackupType": "",
+            "BackupCreationDateTime": "",
+            "BackupExpiryDateTime": ""
+          },
+          "SourceTableDetails": {
+            "TableName": "",
+            "TableId": "",
+            "TableArn": "",
+            "TableSizeBytes": "",
+            "KeySchema": [
+              {
+                "AttributeName": "",
+                "KeyType": ""
+              }
+            ],
+            "TableCreationDateTime": "",
+            "ProvisionedThroughput": {
+              "ReadCapacityUnits": "",
+              "WriteCapacityUnits": ""
+            },
+            "ItemCount": "",
+            "BillingMode": ""
+          },
+          "SourceTableFeatureDetails": {
+            "LocalSecondaryIndexes": [
+              {
+                "IndexName": "",
+                "KeySchema": [
+                  {
+                    "AttributeName": "",
+                    "KeyType": ""
+                  }
+                ],
+                "Projection": {
+                  "ProjectionType": "",
+                  "NonKeyAttributes": [
+                  ]
+                }
+              }
+            ],
+            "GlobalSecondaryIndexes": [
+              {
+                "IndexName": "",
+                "KeySchema": [
+                  {
+                    "AttributeName": "",
+                    "KeyType": ""
+                  }
+                ],
+                "Projection": {
+                  "ProjectionType": "",
+                  "NonKeyAttributes": [
+                  ]
+                },
+                "ProvisionedThroughput": {
+                  "ReadCapacityUnits": "",
+                  "WriteCapacityUnits": ""
+                }
+              }
+            ],
+            "StreamDescription": {
+              "StreamEnabled": "",
+              "StreamViewType": ""
+            },
+            "TimeToLiveDescription": {
+              "TimeToLiveStatus": "",
+              "AttributeName": ""
+            },
+            "SSEDescription": {
+              "Status": "",
+              "SSEType": "",
+              "KMSMasterKeyArn": "",
+              "InaccessibleEncryptionDateTime": ""
+            }
+          }
+        }
+      }
+    }
+  ]
+}
