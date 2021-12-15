@@ -2,7 +2,7 @@
   "name": "amazon-dynamodb",
   "version": "1.0.0",
   "label": "Amazon DynamoDB",
-  "description": "",
+  "description": "Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. This connector facilitates the automate operations related to manage database table, data and backup.",
   "publisher": "Fortinet",
   "cs_approved": false,
   "cs_compatible": true,
