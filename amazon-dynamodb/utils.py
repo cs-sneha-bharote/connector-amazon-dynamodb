@@ -1,5 +1,5 @@
 """ Copyright start
-  Copyright (C) 2008 - 2021 Fortinet Inc.
+  Copyright (C) 2008 - 2022 Fortinet Inc.
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
@@ -14,18 +14,32 @@ logger = get_logger('amazon-dynamodb')
 class DynamoDB(object):
 
     def __init__(self, config):
+        self.config_type = config.get('config_type')
         self.aws_access_key_id = config.get('aws_access_key_id')
         self.aws_secret_access_key = config.get('aws_secret_access_key')
         self.region_name = config.get('region_name')
+        self.aws_iam_role = config.get('aws_iam_role')
 
     def _get_dynamodb_client(self):
         try:
-            client = boto3.client(
-                'dynamodb',
-                aws_access_key_id=self.aws_access_key_id,
-                aws_secret_access_key=self.aws_secret_access_key,
-                region_name=self.region_name
-            )
+            if self.config_type == 'Assume Role':
+                sts_client = boto3.client('sts', aws_access_key_id=self.aws_access_key_id,
+                                          aws_secret_access_key=self.aws_secret_access_key)
+                sts_response = sts_client.assume_role(RoleArn=self.aws_iam_role, RoleSessionName='DynamoDB')
+                client = boto3.client(
+                    'dynamodb',
+                    aws_access_key_id=sts_response.get('Credentials').get('AccessKeyId'),
+                    aws_secret_access_key=sts_response.get('Credentials').get('SecretAccessKey'),
+                    aws_session_token=sts_response.get('Credentials').get('SessionToken'),
+                    region_name=self.region_name
+                )
+            else:
+                client = boto3.client(
+                    'dynamodb',
+                    aws_access_key_id=self.aws_access_key_id,
+                    aws_secret_access_key=self.aws_secret_access_key,
+                    region_name=self.region_name
+                )
             return client
         except Exception as err:
             logger.error('{}'.format(str(err)))
