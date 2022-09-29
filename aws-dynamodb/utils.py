@@ -8,7 +8,7 @@ from connectors.core.connector import get_logger, ConnectorError
 import boto3
 from .constant import *
 
-logger = get_logger('amazon-dynamodb')
+logger = get_logger('aws-dynamodb')
 
 
 class DynamoDB(object):

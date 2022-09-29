@@ -7,10 +7,10 @@
 from connectors.core.connector import get_logger, ConnectorError, Connector
 from .operations import operations, health_check
 
-logger = get_logger('amazon-dynamodb')
+logger = get_logger('aws-dynamodb')
 
 
-class AmazonDynamoDB(Connector):
+class AWSDynamoDB(Connector):
     try:
         def execute(self, config, operation, params, **kwargs):
             action = operations.get(operation)

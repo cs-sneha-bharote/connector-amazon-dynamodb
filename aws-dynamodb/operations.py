@@ -9,7 +9,7 @@ from .utils import DynamoDB
 import functools
 import operator
 
-logger = get_logger('amazon-dynamodb')
+logger = get_logger('aws-dynamodb')
 
 
 def create_table(config, params):

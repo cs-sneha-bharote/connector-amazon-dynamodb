@@ -4,13 +4,13 @@
     {
       "uuid": "0f7292f5-825a-40f6-bedb-730c62869bdc",
       "@type": "WorkflowCollection",
-      "name": "Sample - Amazon DynamoDB - 1.0.0",
-      "description": "Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. This connector facilitates the automate operations related to manage database table, data and backup.",
+      "name": "Sample - AWS DynamoDB - 1.0.0",
+      "description": "AWS DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. This connector facilitates the automate operations related to manage database table, data and backup.",
       "visible": true,
       "image": null,
       "recordTags": [
-        "Amazon",
-        "amazon-dynamodb"
+        "AWS",
+        "aws-dynamodb"
       ],
       "workflows": [
         {
@@ -18,12 +18,12 @@
           "uuid": "ce148236-9658-4e42-bcc9-831ef0681f1e",
           "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
           "triggerLimit": null,
-          "description": "Adds a new table in Amazon DynamoDB",
+          "description": "Adds a new table in AWS DynamoDB",
           "name": "Create Table",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -40,7 +40,7 @@
               "status": null,
               "arguments": {
                 "route": "c8997906-ded6-4d9f-bb1c-6be0c10e7974",
-                "title": "Amazon DynamoDB: Create Table",
+                "title": "AWS DynamoDB: Create Table",
                 "resources": [
                   "alerts"
                 ],
@@ -65,8 +65,8 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "TableName": "",
                   "partitionKeyName": "",
@@ -75,7 +75,7 @@
                   "billingMode": ""
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "create_table",
                 "operationTitle": "Create Table",
                 "step_variables": {
@@ -104,12 +104,12 @@
           "uuid": "6e20df48-e3c2-44ff-a737-8da79856bbb9",
           "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
           "triggerLimit": null,
-          "description": "Deletes an existing table from Amazon DynamoDB",
+          "description": "Deletes an existing table from AWS DynamoDB",
           "name": "Delete Table",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -126,7 +126,7 @@
               "status": null,
               "arguments": {
                 "route": "15c70fe1-8d4a-4fce-a772-8fdb7e32a48d",
-                "title": "Amazon DynamoDB: Delete Table",
+                "title": "AWS DynamoDB: Delete Table",
                 "resources": [
                   "alerts"
                 ],
@@ -151,13 +151,13 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "TableName": ""
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "delete_table",
                 "operationTitle": "Delete Table",
                 "step_variables": {
@@ -188,10 +188,10 @@
           "triggerLimit": null,
           "description": "Updated an existing table",
           "name": "Update Table",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -208,7 +208,7 @@
               "status": null,
               "arguments": {
                 "route": "e9f603e0-db1b-4efe-b776-c48333f4c566",
-                "title": "Amazon DynamoDB: Update Table",
+                "title": "AWS DynamoDB: Update Table",
                 "resources": [
                   "alerts"
                 ],
@@ -233,14 +233,14 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "TableName": "",
                   "updateOperation": ""
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "update_table",
                 "operationTitle": "Update Table",
                 "step_variables": {
@@ -269,12 +269,12 @@
           "uuid": "c48d1b85-ef4b-459e-87f4-b73a069bcf60",
           "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
           "triggerLimit": null,
-          "description": "Get list of an existing table from Amazon DynamoDB",
+          "description": "Get list of an existing table from AWS DynamoDB",
           "name": "Get Table List",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -291,7 +291,7 @@
               "status": null,
               "arguments": {
                 "route": "fdfd074d-d459-4b8c-9dcd-221a55a07d26",
-                "title": "Amazon DynamoDB: Get Table List",
+                "title": "AWS DynamoDB: Get Table List",
                 "resources": [
                   "alerts"
                 ],
@@ -316,11 +316,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": [],
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "get_table_list",
                 "operationTitle": "Get Table List",
                 "step_variables": {
@@ -349,12 +349,12 @@
           "uuid": "fa58dfc5-722e-41d6-a65c-168978a5ac64",
           "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
           "triggerLimit": null,
-          "description": "Describe information about specified table from Amazon DynamoDB",
+          "description": "Describe information about specified table from AWS DynamoDB",
           "name": "Get Table Details",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -371,7 +371,7 @@
               "status": null,
               "arguments": {
                 "route": "43c011d5-f193-480b-985f-834c6648dc50",
-                "title": "Amazon DynamoDB: Get Table Details",
+                "title": "AWS DynamoDB: Get Table Details",
                 "resources": [
                   "alerts"
                 ],
@@ -396,13 +396,13 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "TableName": ""
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "get_table_details",
                 "operationTitle": "Get Table Details",
                 "step_variables": {
@@ -433,10 +433,10 @@
           "triggerLimit": null,
           "description": "Adds a new item in table",
           "name": "Add Item",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -453,7 +453,7 @@
               "status": null,
               "arguments": {
                 "route": "6df0861e-3dad-4ff3-b989-111327836281",
-                "title": "Amazon DynamoDB: Add Item",
+                "title": "AWS DynamoDB: Add Item",
                 "resources": [
                   "alerts"
                 ],
@@ -478,8 +478,8 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "TableName": "",
                   "partitionKeyName": "",
@@ -489,7 +489,7 @@
                   "additionalAttributes": ""
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "add_item",
                 "operationTitle": "Add Item",
                 "step_variables": {
@@ -520,10 +520,10 @@
           "triggerLimit": null,
           "description": "Deleted an item in specified table",
           "name": "Delete Item",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -540,7 +540,7 @@
               "status": null,
               "arguments": {
                 "route": "e22707f9-00cb-4bd8-90a6-5a22a1379447",
-                "title": "Amazon DynamoDB: Delete Item",
+                "title": "AWS DynamoDB: Delete Item",
                 "resources": [
                   "alerts"
                 ],
@@ -565,8 +565,8 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "TableName": "",
                   "partitionKeyName": "",
@@ -576,7 +576,7 @@
                   "additionalAttributes": ""
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "delete_item",
                 "operationTitle": "Delete Item",
                 "step_variables": {
@@ -607,10 +607,10 @@
           "triggerLimit": null,
           "description": "Searches an item in specified table.",
           "name": "Search Item",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -627,7 +627,7 @@
               "status": null,
               "arguments": {
                 "route": "9ed66b4f-db8d-49fb-8425-d1080da172e8",
-                "title": "Amazon DynamoDB: Search Item",
+                "title": "AWS DynamoDB: Search Item",
                 "resources": [
                   "alerts"
                 ],
@@ -652,8 +652,8 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "TableName": "",
                   "partitionKeyName": "",
@@ -662,7 +662,7 @@
                   "sortKey": false
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "search_item",
                 "operationTitle": "Search Item",
                 "step_variables": {
@@ -693,10 +693,10 @@
           "triggerLimit": null,
           "description": "Creates a global table from an existing table.",
           "name": "Create Global Table",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -713,7 +713,7 @@
               "status": null,
               "arguments": {
                 "route": "4e50e246-974b-4013-a2be-144210dc4e76",
-                "title": "Amazon DynamoDB: Create Global Table",
+                "title": "AWS DynamoDB: Create Global Table",
                 "resources": [
                   "alerts"
                 ],
@@ -738,14 +738,14 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "globalTableName": "",
                   "regionName": ""
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "create_global_table",
                 "operationTitle": "Create Global Table",
                 "step_variables": {
@@ -776,10 +776,10 @@
           "triggerLimit": null,
           "description": "Returns information about the specified global table.",
           "name": "Describe Global Table",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -796,7 +796,7 @@
               "status": null,
               "arguments": {
                 "route": "804d568f-9930-4270-b101-ea8c32cf3298",
-                "title": "Amazon DynamoDB: Describe Global Table",
+                "title": "AWS DynamoDB: Describe Global Table",
                 "resources": [
                   "alerts"
                 ],
@@ -821,13 +821,13 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "globalTableName": ""
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "describe_global_table",
                 "operationTitle": "Describe Global Table",
                 "step_variables": {
@@ -858,10 +858,10 @@
           "triggerLimit": null,
           "description": "Lists all global tables that have a replica in the specified Region.",
           "name": "Get Global Table List",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -878,7 +878,7 @@
               "status": null,
               "arguments": {
                 "route": "4a54a4c0-5cb9-445b-8da5-328187118c20",
-                "title": "Amazon DynamoDB: Get Global Table List",
+                "title": "AWS DynamoDB: Get Global Table List",
                 "resources": [
                   "alerts"
                 ],
@@ -903,11 +903,11 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": [],
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "get_global_table_list",
                 "operationTitle": "Get Global Table List",
                 "step_variables": {
@@ -938,10 +938,10 @@
           "triggerLimit": null,
           "description": "Creates a backup for an existing table.",
           "name": "Create Table Backup",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -958,7 +958,7 @@
               "status": null,
               "arguments": {
                 "route": "e3396501-6394-4fd3-b1ed-4c0b7b48c9fb",
-                "title": "Amazon DynamoDB: Create Table Backup",
+                "title": "AWS DynamoDB: Create Table Backup",
                 "resources": [
                   "alerts"
                 ],
@@ -983,14 +983,14 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "TableName": "",
                   "BackupName": ""
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "create_backup",
                 "operationTitle": "Create Table Backup",
                 "step_variables": {
@@ -1021,10 +1021,10 @@
           "triggerLimit": null,
           "description": "Describes an existing backup of a table.",
           "name": "Describe Table Backup",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -1041,7 +1041,7 @@
               "status": null,
               "arguments": {
                 "route": "ca9bab16-1691-4ccb-950f-4b9c1cf65758",
-                "title": "Amazon DynamoDB: Describe Table Backup",
+                "title": "AWS DynamoDB: Describe Table Backup",
                 "resources": [
                   "alerts"
                 ],
@@ -1066,13 +1066,13 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "BackupArn": ""
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "describe_table_backup",
                 "operationTitle": "Describe Table Backup",
                 "step_variables": {
@@ -1103,10 +1103,10 @@
           "triggerLimit": null,
           "description": "Deletes an existing backup of a table.",
           "name": "Delete Table Backup",
-          "tag": "#Amazon DynamoDB",
+          "tag": "#AWS DynamoDB",
           "recordTags": [
-            "Amazon",
-            "amazon-dynamodb"
+            "AWS",
+            "aws-dynamodb"
           ],
           "isActive": false,
           "debug": false,
@@ -1123,7 +1123,7 @@
               "status": null,
               "arguments": {
                 "route": "98063b6c-e3f7-4312-b2f2-124ac8799078",
-                "title": "Amazon DynamoDB: Delete Table Backup",
+                "title": "AWS DynamoDB: Delete Table Backup",
                 "resources": [
                   "alerts"
                 ],
@@ -1148,13 +1148,13 @@
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Amazon DynamoDB",
-                "config": "''",
+                "name": "AWS DynamoDB",
+                "config": "",
                 "params": {
                   "BackupArn": ""
                 },
                 "version": "1.0.0",
-                "connector": "amazon-dynamodb",
+                "connector": "aws-dynamodb",
                 "operation": "delete_table_backup",
                 "operationTitle": "Delete Table Backup",
                 "step_variables": {

@@ -1,14 +1,14 @@
 {
-  "name": "amazon-dynamodb",
+  "name": "aws-dynamodb",
   "version": "1.0.0",
-  "label": "Amazon DynamoDB",
-  "description": "Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. This connector facilitates the automate operations related to manage database table, data and backup.",
+  "label": "AWS DynamoDB",
+  "description": "AWS DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. This connector facilitates the automate operations related to manage database table, data and backup.",
   "publisher": "Fortinet",
-  "cs_approved": false,
+  "cs_approved": true,
   "cs_compatible": true,
-  "category": "AWS Services",
-  "icon_small_name": "cyops_small.png",
-  "icon_large_name": "cyops_large.png",
+  "category": "AWS Service",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
   "help_online": "",
   "configuration": {
     "fields": [
@@ -108,7 +108,7 @@
     {
       "title": "Create Table",
       "operation": "create_table",
-      "description": "Adds a new table in Amazon DynamoDB",
+      "description": "Adds a new table in AWS DynamoDB",
       "category": "utilities",
       "enabled": true,
       "parameters": [
@@ -366,7 +366,7 @@
     {
       "title": "Delete Table",
       "operation": "delete_table",
-      "description": "Deletes an existing table from Amazon DynamoDB",
+      "description": "Deletes an existing table from AWS DynamoDB",
       "category": "utilities",
       "enabled": true,
       "parameters": [
@@ -950,7 +950,7 @@
     {
       "title": "Get Table List",
       "operation": "get_table_list",
-      "description": "Get list of an existing table from Amazon DynamoDB",
+      "description": "Get list of an existing table from AWS DynamoDB",
       "category": "utilities",
       "enabled": true,
       "parameters": [],
@@ -959,7 +959,7 @@
     {
       "title": "Get Table Details",
       "operation": "get_table_details",
-      "description": "Describe information about specified table from Amazon DynamoDB",
+      "description": "Describe information about specified table from AWS DynamoDB",
       "category": "utilities",
       "enabled": true,
       "parameters": [
@@ -1827,8 +1827,8 @@
       "parameters": [
         {
           "title": "Backup ARN",
-          "description": "The Amazon Resource Name (ARN) associated with the backup.",
-          "tooltip": "The Amazon Resource Name (ARN) associated with the backup.",
+          "description": "The AWS Resource Name (ARN) associated with the backup.",
+          "tooltip": "The AWS Resource Name (ARN) associated with the backup.",
           "type": "text",
           "name": "BackupArn",
           "required": true,
@@ -1931,8 +1931,8 @@
       "parameters": [
         {
           "title": "Backup ARN",
-          "description": "The Amazon Resource Name (ARN) associated with the backup.",
-          "tooltip": "The Amazon Resource Name (ARN) associated with the backup.",
+          "description": "The AWS Resource Name (ARN) associated with the backup.",
+          "tooltip": "The AWS Resource Name (ARN) associated with the backup.",
           "type": "text",
           "name": "BackupArn",
           "required": true,

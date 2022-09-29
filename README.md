@@ -1,1 +1,1 @@
-# connector-amazon-dynamodb
+# connector-aws-dynamodb
