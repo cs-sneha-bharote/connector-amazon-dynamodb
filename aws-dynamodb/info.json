@@ -20,7 +20,7 @@
         "type": "select",
         "name": "config_type",
         "tooltip": "AWS Configuration Type",
-        "description": "Type of configuration using which you will provide credentials to access AWS CloudWatch Logs and perform automated actions. You can select between Assume Role or Access Credentials. If you select Assume Role, then enter details in the following field(s): AWS Region: AWS region of your account to access the AWS CloudWatch Logs. AWS Access Key ID: ID of the AWS Access Key to access AWS services. AWS Secret Access Key: Key of the AWS Secret Access to access AWS services. AWS Instance IAM Role: ARN IAM Role of your AWS instance to access CloudWatch Log services. If you select Access Credentials, then enter details in the following field(s): AWS Region: AWS region of your account to access the AWS CloudWatch Logs. AWS Access Key ID: ID of the AWS Access Key to access AWS services. AWS Secret Access Key: Key of the AWS Secret Access to access AWS services.",
+        "description": "Type of configuration using which you will provide credentials to access AWS DynamoDB Logs and perform automated actions. You can select between Assume Role or Access Credentials. If you select Assume Role, then enter details in the following field(s): AWS Region: AWS region of your account to access the AWS DynamoDB Logs. AWS Access Key ID: ID of the AWS Access Key to access AWS services. AWS Secret Access Key: Key of the AWS Secret Access to access AWS services. AWS Instance IAM Role: ARN IAM Role of your AWS instance to access DynamoDB Log services. If you select Access Credentials, then enter details in the following field(s): AWS Region: AWS region of your account to access the AWS DynamoDB Logs. AWS Access Key ID: ID of the AWS Access Key to access AWS services. AWS Secret Access Key: Key of the AWS Secret Access to access AWS services.",
         "options": [
           "Assume Role",
           "Access Credentials"
@@ -64,8 +64,8 @@
               "visible": true,
               "type": "text",
               "name": "aws_iam_role",
-              "tooltip": "IAM Role of your AWS instance to access CloudWatch Logs services.",
-              "description": "IAM Role of your AWS instance to access CloudWatch Logs services. Ensure that the user has a trust relationship with the role with action STS Assume Role enabled"
+              "tooltip": "IAM Role of your AWS instance to access DynamoDB Logs services.",
+              "description": "IAM Role of your AWS instance to access DynamoDB Logs services. Ensure that the user has a trust relationship with the role with action STS Assume Role enabled"
             }
           ],
           "Access Credentials": [
