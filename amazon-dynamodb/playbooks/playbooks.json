@@ -1,0 +1,1184 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "0f7292f5-825a-40f6-bedb-730c62869bdc",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Amazon DynamoDB - 1.0.0",
+      "description": "Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. This connector facilitates the automate operations related to manage database table, data and backup.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Amazon",
+        "amazon-dynamodb"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "ce148236-9658-4e42-bcc9-831ef0681f1e",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Adds a new table in Amazon DynamoDB",
+          "name": "Create Table",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c3010cb6-15d5-437d-a7de-00f74d2307b8",
+          "steps": [
+            {
+              "uuid": "c3010cb6-15d5-437d-a7de-00f74d2307b8",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "c8997906-ded6-4d9f-bb1c-6be0c10e7974",
+                "title": "Amazon DynamoDB: Create Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "0007de35-a807-4f44-b0cb-a820475c9de5",
+              "@type": "WorkflowStep",
+              "name": "Create Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "TableName": "",
+                  "partitionKeyName": "",
+                  "partitionKeyDataType": "",
+                  "sortKey": false,
+                  "billingMode": ""
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "create_table",
+                "operationTitle": "Create Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "9a562db9-6c48-4726-97e5-e5fb76847822",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create Table",
+              "sourceStep": "/api/3/workflow_steps/c3010cb6-15d5-437d-a7de-00f74d2307b8",
+              "targetStep": "/api/3/workflow_steps/0007de35-a807-4f44-b0cb-a820475c9de5"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "6e20df48-e3c2-44ff-a737-8da79856bbb9",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Deletes an existing table from Amazon DynamoDB",
+          "name": "Delete Table",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/7a1f2144-c89e-4a20-ad72-368dc1109ffd",
+          "steps": [
+            {
+              "uuid": "7a1f2144-c89e-4a20-ad72-368dc1109ffd",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "15c70fe1-8d4a-4fce-a772-8fdb7e32a48d",
+                "title": "Amazon DynamoDB: Delete Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "6d5f9614-65dd-42d5-b021-d38ade1793d3",
+              "@type": "WorkflowStep",
+              "name": "Delete Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "TableName": ""
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "delete_table",
+                "operationTitle": "Delete Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "129c4309-3e7e-4ded-aca1-97d6aba41c9f",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Table",
+              "sourceStep": "/api/3/workflow_steps/7a1f2144-c89e-4a20-ad72-368dc1109ffd",
+              "targetStep": "/api/3/workflow_steps/6d5f9614-65dd-42d5-b021-d38ade1793d3"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "630ab9a8-0ede-469e-b2a5-92ddbf5ae08b",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Updated an existing table",
+          "name": "Update Table",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/8b3fe918-73de-426b-94f2-8fba0f58a3a6",
+          "steps": [
+            {
+              "uuid": "8b3fe918-73de-426b-94f2-8fba0f58a3a6",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "e9f603e0-db1b-4efe-b776-c48333f4c566",
+                "title": "Amazon DynamoDB: Update Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "31ff64b0-09c3-413c-976a-23d990cbc9ce",
+              "@type": "WorkflowStep",
+              "name": "Update Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "TableName": "",
+                  "updateOperation": ""
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "update_table",
+                "operationTitle": "Update Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "4c6c65aa-005a-4791-b6f4-07b898e0f49f",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update Table",
+              "sourceStep": "/api/3/workflow_steps/8b3fe918-73de-426b-94f2-8fba0f58a3a6",
+              "targetStep": "/api/3/workflow_steps/31ff64b0-09c3-413c-976a-23d990cbc9ce"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "c48d1b85-ef4b-459e-87f4-b73a069bcf60",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Get list of an existing table from Amazon DynamoDB",
+          "name": "Get Table List",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ca2fe7fc-fb2a-468d-b1a9-4159fc78d574",
+          "steps": [
+            {
+              "uuid": "ca2fe7fc-fb2a-468d-b1a9-4159fc78d574",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "fdfd074d-d459-4b8c-9dcd-221a55a07d26",
+                "title": "Amazon DynamoDB: Get Table List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "45e92181-425e-4740-ab3c-5f3f59752cd9",
+              "@type": "WorkflowStep",
+              "name": "Get Table List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "get_table_list",
+                "operationTitle": "Get Table List",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "a640fb35-79cc-40ec-ae30-197c2087691a",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Table List",
+              "sourceStep": "/api/3/workflow_steps/ca2fe7fc-fb2a-468d-b1a9-4159fc78d574",
+              "targetStep": "/api/3/workflow_steps/45e92181-425e-4740-ab3c-5f3f59752cd9"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "fa58dfc5-722e-41d6-a65c-168978a5ac64",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Describe information about specified table from Amazon DynamoDB",
+          "name": "Get Table Details",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/bc3a087c-3c87-4343-912f-f9aaf4803b98",
+          "steps": [
+            {
+              "uuid": "bc3a087c-3c87-4343-912f-f9aaf4803b98",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "43c011d5-f193-480b-985f-834c6648dc50",
+                "title": "Amazon DynamoDB: Get Table Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "c2e9cf58-1949-496f-ae21-dbdc45a90824",
+              "@type": "WorkflowStep",
+              "name": "Get Table Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "TableName": ""
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "get_table_details",
+                "operationTitle": "Get Table Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "49de0d5f-2bd3-4ca5-8a03-841f1b1dc13c",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Table Details",
+              "sourceStep": "/api/3/workflow_steps/bc3a087c-3c87-4343-912f-f9aaf4803b98",
+              "targetStep": "/api/3/workflow_steps/c2e9cf58-1949-496f-ae21-dbdc45a90824"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "917264ca-0257-481e-8ef2-b8b2660626a8",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Adds a new item in table",
+          "name": "Add Item",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b5e85123-c5c5-4f37-b8ad-9c5eeb7af664",
+          "steps": [
+            {
+              "uuid": "b5e85123-c5c5-4f37-b8ad-9c5eeb7af664",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "6df0861e-3dad-4ff3-b989-111327836281",
+                "title": "Amazon DynamoDB: Add Item",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "675673e0-0755-448a-b3d3-573aa7a864a9",
+              "@type": "WorkflowStep",
+              "name": "Add Item",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "TableName": "",
+                  "partitionKeyName": "",
+                  "partitionKeyDataType": "",
+                  "partitionKeyValue": "",
+                  "sortKey": false,
+                  "additionalAttributes": ""
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "add_item",
+                "operationTitle": "Add Item",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "c1f38a69-86b9-46e7-b8b7-08bfe91cf129",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Add Item",
+              "sourceStep": "/api/3/workflow_steps/b5e85123-c5c5-4f37-b8ad-9c5eeb7af664",
+              "targetStep": "/api/3/workflow_steps/675673e0-0755-448a-b3d3-573aa7a864a9"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "9c98fa8c-82b2-485b-a4ea-d7830516b5e4",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Deleted an item in specified table",
+          "name": "Delete Item",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/6111b67b-ff91-45fe-b1fe-aaaff24f399b",
+          "steps": [
+            {
+              "uuid": "6111b67b-ff91-45fe-b1fe-aaaff24f399b",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "e22707f9-00cb-4bd8-90a6-5a22a1379447",
+                "title": "Amazon DynamoDB: Delete Item",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "0ff144d8-9731-4dcc-9444-470670039655",
+              "@type": "WorkflowStep",
+              "name": "Delete Item",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "TableName": "",
+                  "partitionKeyName": "",
+                  "partitionKeyDataType": "",
+                  "partitionKeyValue": "",
+                  "sortKey": false,
+                  "additionalAttributes": ""
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "delete_item",
+                "operationTitle": "Delete Item",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "59ff1233-36aa-4fe6-b45f-c8061b0f0232",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Item",
+              "sourceStep": "/api/3/workflow_steps/6111b67b-ff91-45fe-b1fe-aaaff24f399b",
+              "targetStep": "/api/3/workflow_steps/0ff144d8-9731-4dcc-9444-470670039655"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "0199ae01-99cb-4e62-a089-a24a1954c254",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Searches an item in specified table.",
+          "name": "Search Item",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/97b4cb8c-4a53-4420-be2c-b54ea2ae4432",
+          "steps": [
+            {
+              "uuid": "97b4cb8c-4a53-4420-be2c-b54ea2ae4432",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "9ed66b4f-db8d-49fb-8425-d1080da172e8",
+                "title": "Amazon DynamoDB: Search Item",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "5aaae133-61fd-4f9b-b4f0-fe008b063de0",
+              "@type": "WorkflowStep",
+              "name": "Search Item",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "TableName": "",
+                  "partitionKeyName": "",
+                  "partitionKeyDataType": "",
+                  "partitionKeyValue": "",
+                  "sortKey": false
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "search_item",
+                "operationTitle": "Search Item",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "c3b729de-bedf-45e3-bdc4-22dadcb0a886",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Search Item",
+              "sourceStep": "/api/3/workflow_steps/97b4cb8c-4a53-4420-be2c-b54ea2ae4432",
+              "targetStep": "/api/3/workflow_steps/5aaae133-61fd-4f9b-b4f0-fe008b063de0"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "ad3f1676-b7d3-4a3c-8965-fffbf1b4f288",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Creates a global table from an existing table.",
+          "name": "Create Global Table",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c23ecee4-f362-41cc-956a-306fe709c6ab",
+          "steps": [
+            {
+              "uuid": "c23ecee4-f362-41cc-956a-306fe709c6ab",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "4e50e246-974b-4013-a2be-144210dc4e76",
+                "title": "Amazon DynamoDB: Create Global Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "c39ec501-56e8-422c-929a-d25d72ddece7",
+              "@type": "WorkflowStep",
+              "name": "Create Global Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "globalTableName": "",
+                  "regionName": ""
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "create_global_table",
+                "operationTitle": "Create Global Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "49953e8d-46e6-4b7d-b60a-4b97f7ad690e",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create Global Table",
+              "sourceStep": "/api/3/workflow_steps/c23ecee4-f362-41cc-956a-306fe709c6ab",
+              "targetStep": "/api/3/workflow_steps/c39ec501-56e8-422c-929a-d25d72ddece7"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "0878668d-59a6-452d-8acc-ea1661018c57",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Returns information about the specified global table.",
+          "name": "Describe Global Table",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ed4a0b13-0239-4ce2-ba1d-aa3a9d5cfd0e",
+          "steps": [
+            {
+              "uuid": "ed4a0b13-0239-4ce2-ba1d-aa3a9d5cfd0e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "804d568f-9930-4270-b101-ea8c32cf3298",
+                "title": "Amazon DynamoDB: Describe Global Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "f398a569-e9ef-4944-8621-ee5c812a2970",
+              "@type": "WorkflowStep",
+              "name": "Describe Global Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "globalTableName": ""
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "describe_global_table",
+                "operationTitle": "Describe Global Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "95d42d9c-5354-4b0f-a2df-6680789d3230",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Describe Global Table",
+              "sourceStep": "/api/3/workflow_steps/ed4a0b13-0239-4ce2-ba1d-aa3a9d5cfd0e",
+              "targetStep": "/api/3/workflow_steps/f398a569-e9ef-4944-8621-ee5c812a2970"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "6ae7a425-5bef-4932-abeb-9df9c3df7286",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Lists all global tables that have a replica in the specified Region.",
+          "name": "Get Global Table List",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/e9180cfd-b041-48ee-8061-4aacebab26d8",
+          "steps": [
+            {
+              "uuid": "e9180cfd-b041-48ee-8061-4aacebab26d8",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "4a54a4c0-5cb9-445b-8da5-328187118c20",
+                "title": "Amazon DynamoDB: Get Global Table List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "acda6653-a223-482d-8a53-fa8143629d6f",
+              "@type": "WorkflowStep",
+              "name": "Get Global Table List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "get_global_table_list",
+                "operationTitle": "Get Global Table List",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "ae5f5833-2f20-444d-bcca-01689a82af53",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Global Table List",
+              "sourceStep": "/api/3/workflow_steps/e9180cfd-b041-48ee-8061-4aacebab26d8",
+              "targetStep": "/api/3/workflow_steps/acda6653-a223-482d-8a53-fa8143629d6f"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "7461c554-1075-4ca8-b7a1-5c55c8eecc24",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Creates a backup for an existing table.",
+          "name": "Create Table Backup",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ecb72bf9-3bc8-4f95-8061-e83f9c3a9f02",
+          "steps": [
+            {
+              "uuid": "ecb72bf9-3bc8-4f95-8061-e83f9c3a9f02",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "e3396501-6394-4fd3-b1ed-4c0b7b48c9fb",
+                "title": "Amazon DynamoDB: Create Table Backup",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "7c28aba2-8649-4803-8267-4755f58924e5",
+              "@type": "WorkflowStep",
+              "name": "Create Table Backup",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "TableName": "",
+                  "BackupName": ""
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "create_backup",
+                "operationTitle": "Create Table Backup",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "1a8a7b4e-e531-4e62-ab43-40814d79235b",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create Table Backup",
+              "sourceStep": "/api/3/workflow_steps/ecb72bf9-3bc8-4f95-8061-e83f9c3a9f02",
+              "targetStep": "/api/3/workflow_steps/7c28aba2-8649-4803-8267-4755f58924e5"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "51207656-359e-4e5d-b965-44c3e2d7787d",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Describes an existing backup of a table.",
+          "name": "Describe Table Backup",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b9807d5c-1d79-45cb-a481-ac86fc4f4cc3",
+          "steps": [
+            {
+              "uuid": "b9807d5c-1d79-45cb-a481-ac86fc4f4cc3",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "ca9bab16-1691-4ccb-950f-4b9c1cf65758",
+                "title": "Amazon DynamoDB: Describe Table Backup",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "435f8aaf-a2f4-4ddf-8280-085ca0a23a22",
+              "@type": "WorkflowStep",
+              "name": "Describe Table Backup",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "BackupArn": ""
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "describe_table_backup",
+                "operationTitle": "Describe Table Backup",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "aab4aa4a-a535-465d-9801-04dd230e8b51",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Describe Table Backup",
+              "sourceStep": "/api/3/workflow_steps/b9807d5c-1d79-45cb-a481-ac86fc4f4cc3",
+              "targetStep": "/api/3/workflow_steps/435f8aaf-a2f4-4ddf-8280-085ca0a23a22"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "5b160b3c-81f7-4661-ba52-e1873b0faed9",
+          "collection": "/api/3/workflow_collections/0f7292f5-825a-40f6-bedb-730c62869bdc",
+          "triggerLimit": null,
+          "description": "Deletes an existing backup of a table.",
+          "name": "Delete Table Backup",
+          "tag": "#Amazon DynamoDB",
+          "recordTags": [
+            "Amazon",
+            "amazon-dynamodb"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/bb60151c-f3c9-412b-bfff-b8e989e3bcad",
+          "steps": [
+            {
+              "uuid": "bb60151c-f3c9-412b-bfff-b8e989e3bcad",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "98063b6c-e3f7-4312-b2f2-124ac8799078",
+                "title": "Amazon DynamoDB: Delete Table Backup",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "f9dc5283-332f-48b3-86b1-fd38199fbb1a",
+              "@type": "WorkflowStep",
+              "name": "Delete Table Backup",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Amazon DynamoDB",
+                "config": "''",
+                "params": {
+                  "BackupArn": ""
+                },
+                "version": "1.0.0",
+                "connector": "amazon-dynamodb",
+                "operation": "delete_table_backup",
+                "operationTitle": "Delete Table Backup",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "9925ba94-2433-4b03-b5d1-78b700fe32d2",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Table Backup",
+              "sourceStep": "/api/3/workflow_steps/bb60151c-f3c9-412b-bfff-b8e989e3bcad",
+              "targetStep": "/api/3/workflow_steps/f9dc5283-332f-48b3-86b1-fd38199fbb1a"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
